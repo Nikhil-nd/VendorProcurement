@@ -54,6 +54,30 @@ cd Smart-Procurement-Vendor-Management-System-Frontend
 npm run build
 ```
 
+## Workflow
+
+```
+Admin Setup
+   ↓
+Vendor Registration
+   ↓
+Employee Creates Requisition
+   ↓
+Manager Approves / Rejects
+   ↓
+Procurement Creates Purchase Order
+   ↓
+Vendor Delivers Items
+   ↓
+Vendor Sends Invoice
+   ↓
+Finance Processes Payment
+   ↓
+Reports Generated
+   ↓
+Audit Logs Recorded
+```
+
 ## Notes
 
 - Backend and frontend are tracked together in this single repository.
