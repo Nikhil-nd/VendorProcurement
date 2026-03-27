@@ -38,6 +38,9 @@ import VendorApproval from "../pages/admin/VendorApproval";
 import ProtectedRoute from "../components/ProtectedRoute";
 import  ProcessPayment from "../pages/finance/ProcessPayment";
 import  Reports from "../pages/finance/Reports";
+import CostAnalysis from "../pages/finance/CostAnalysis";
+import SpendAnalysis from "../pages/finance/SpendAnalysis";
+import VendorPerformance from "../pages/finance/VendorPerformance";
 
 import { Navigate } from "react-router-dom";
 
@@ -120,6 +123,9 @@ function AppRouter() {
     <Route path="purchase-orders" element={<PurchaseOrders />} />
    
         <Route path="reports" element={<Reports />} />
+    <Route path="reports/cost-analysis" element={<CostAnalysis />} />
+    <Route path="reports/spend-analysis" element={<SpendAnalysis />} />
+    <Route path="reports/vendor-performance" element={<VendorPerformance />} />
 </Route>
 
 
