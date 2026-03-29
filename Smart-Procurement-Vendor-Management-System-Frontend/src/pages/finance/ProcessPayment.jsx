@@ -17,15 +17,30 @@ export default function ProcessPayment() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
+    // Convert date to YYYY-MM-DD if needed
+    let formattedDate = paymentDate;
+    if (paymentDate && paymentDate.match(/^\d{2}-\d{2}-\d{4}$/)) {
+      const [dd, mm, yyyy] = paymentDate.split("-");
+      formattedDate = `${yyyy}-${mm.padStart(2, '0')}-${dd.padStart(2, '0')}`;
+    }
 
-      await API.post("/payment", {
-        invoiceId: invoiceId,
-        paidAmount: paidAmount,
-        paymentDate: paymentDate,
-        paymentMode: paymentMode,
-        status: status
-      });
+    // Validate all fields
+    if (!invoiceId || !paidAmount || !formattedDate || !paymentMode || !status) {
+      alert("All fields are required. Please fill in all fields.");
+      return;
+    }
+
+    const payload = {
+      invoiceId: invoiceId,
+      paidAmount: paidAmount === "" ? null : Number(paidAmount),
+      paymentDate: formattedDate,
+      paymentMode: paymentMode,
+      status: status
+    };
+    console.log("Submitting payment payload:", payload);
+
+    try {
+      await API.post("/payment", payload);
 
       alert("Payment Processed Successfully");
 
@@ -33,10 +48,20 @@ export default function ProcessPayment() {
       setPaidAmount("");
       setPaymentDate("");
       setPaymentMode("");
+    
       setStatus("");
 
     } catch (error) {
-      console.error(error);
+      console.error("Payment error:", error, "Payload:", payload);
+      let msg = "Payment failed. Please check your input and try again.";
+      if (error.response && error.response.data) {
+        if (typeof error.response.data === "string") {
+          msg += "\n" + error.response.data;
+        } else if (error.response.data.message) {
+          msg += "\n" + error.response.data.message;
+        }
+      }
+      alert(msg);
     }
   };
 

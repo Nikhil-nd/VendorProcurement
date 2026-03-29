@@ -38,13 +38,18 @@ public class PaymentController {
         public Payment create(@RequestBody PaymentRequest request) {
 
             Invoice invoice = invoiceRepository.findById(request.getInvoiceId())
-                    .orElseThrow(() -> new RuntimeException("Invoice not found"));
+                .orElseThrow(() -> new RuntimeException("Invoice not found"));
 
             Payment payment = new Payment();
             payment.setInvoice(invoice);
+            payment.setPaidAmount(request.getPaidAmount());
             payment.setPaymentDate(request.getPaymentDate());
             payment.setPaymentMode(request.getPaymentMode());
             payment.setStatus(request.getStatus());
+
+            // Mark invoice as PAID and save
+            invoice.setStatus("PAID");
+            invoiceRepository.save(invoice);
 
             return paymentRepository.save(payment);
         }

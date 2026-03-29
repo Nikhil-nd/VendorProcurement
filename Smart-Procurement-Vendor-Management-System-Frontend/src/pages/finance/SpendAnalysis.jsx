@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import API from "../../api/axios";
+import BarChartComponent from "../../components/BarChartComponent";
+import PieChartComponent from "../../components/PieChartComponent";
 
 function SpendAnalysis() {
   const [data, setData] = useState([]);
@@ -42,62 +44,128 @@ function SpendAnalysis() {
     }
   };
 
+  const chartData = data.map((row) => ({
+    month: row[0],
+    totalSpend: Number(row[1]) || 0,
+  }));
+
+  const pieData = chartData.map((item) => ({
+    name: item.month,
+    value: item.totalSpend,
+  }));
+
   return (
-    <div style={{ padding: "30px" }}>
-      <h2>Spend Analysis Report</h2>
+    <div style={{ padding: "30px", background: "#f8fafc", minHeight: "100vh" }}>
+      <h2 style={{ marginBottom: "24px", color: "#0f172a" }}>Spend Analysis Report</h2>
 
       {error && <p style={{ color: "red" }}>{error}</p>}
 
-      <table
+      <div
         style={{
-          width: "100%",
-          borderCollapse: "collapse",
-          marginTop: "20px",
+          background: "#ffffff",
+          borderRadius: "16px",
+          padding: "20px",
+          boxShadow: "0 8px 24px rgba(15, 23, 42, 0.08)",
+          marginBottom: "32px",
         }}
       >
-        <thead>
-          <tr>
-            <th style={{ border: "1px solid #cbd5e1", padding: "10px", background: "#248738" }}>
-              Month
-            </th>
-            <th style={{ border: "1px solid #cbd5e1", padding: "10px", background: "#248738" }}>
-              Total Spend
-            </th>
-          </tr>
-        </thead>
+        <table
+          style={{
+            width: "100%",
+            borderCollapse: "collapse",
+          }}
+        >
+          <thead>
+            <tr>
+              <th style={{ border: "1px solid #cbd5e1", padding: "12px", background: "#248738", color: "#ffffff" }}>
+                Month
+              </th>
+              <th style={{ border: "1px solid #cbd5e1", padding: "12px", background: "#248738", color: "#ffffff" }}>
+                Total Spend
+              </th>
+            </tr>
+          </thead>
 
-        <tbody>
-          {data.length > 0 ? (
-            data.map((row, index) => (
-              <tr key={index}>
-                <td style={{ border: "1px solid #cbd5e1", padding: "10px", textAlign: "center", color: "#111827" }}>
-                  {row[0]}
-                </td>
-                <td style={{ border: "1px solid #cbd5e1", padding: "10px", textAlign: "center", color: "#111827" }}>
-                  {row[1]}
+          <tbody>
+            {data.length > 0 ? (
+              data.map((row, index) => (
+                <tr key={index}>
+                  <td style={{ border: "1px solid #cbd5e1", padding: "12px", textAlign: "center", color: "#111827" }}>
+                    {row[0]}
+                  </td>
+                  <td style={{ border: "1px solid #cbd5e1", padding: "12px", textAlign: "center", color: "#111827" }}>
+                    {row[1]}
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="2" style={{ textAlign: "center", padding: "12px" }}>
+                  Loading...
                 </td>
               </tr>
-            ))
-          ) : (
-            <tr>
-              <td colSpan="2" style={{ textAlign: "center", padding: "10px" }}>
-                Loading...
-              </td>
-            </tr>
-          )}
-        </tbody>
-      </table>
+            )}
+          </tbody>
+        </table>
+      </div>
+
+      {chartData.length > 0 && (
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 24, marginBottom: "32px", alignItems: "stretch" }}>
+          <div style={{ flex: "1 1 460px", minWidth: 320 }}>
+            <BarChartComponent
+              data={chartData}
+              xKey="month"
+              barKey="totalSpend"
+              title="Monthly Spend Comparison"
+            />
+          </div>
+
+          <div style={{ flex: "1 1 460px", minWidth: 320 }}>
+            <PieChartComponent
+              data={pieData}
+              dataKey="value"
+              nameKey="name"
+              title="Spend Distribution by Month"
+            />
+          </div>
+        </div>
+      )}
 
       <div
         style={{
           marginTop: "20px",
           display: "flex",
           justifyContent: "center",
-          gap: "10px",
+          flexWrap: "wrap",
+          gap: "12px",
         }}
       >
-        <button onClick={() => downloadFile("pdf")}>Download PDF</button>
-        <button onClick={() => downloadFile("excel")}>Download Excel</button>
+        <button
+          onClick={() => downloadFile("pdf")}
+          style={{
+            background: "#0891b2",
+            color: "#ffffff",
+            border: "none",
+            borderRadius: "8px",
+            padding: "12px 20px",
+            cursor: "pointer",
+          }}
+        >
+          Download PDF
+        </button>
+        <button
+          onClick={() => downloadFile("excel")}
+          style={{
+            background: "#0891b2",
+            color: "#ffffff",
+            border: "none",
+            borderRadius: "8px",
+            padding: "12px 20px",
+            cursor: "pointer",
+          }}
+        >
+          Download Excel
+        </button>
       </div>
     </div>
   );

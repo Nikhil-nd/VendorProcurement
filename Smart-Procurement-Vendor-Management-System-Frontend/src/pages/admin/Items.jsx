@@ -92,6 +92,9 @@ return(
 <Link to="/admin/Inventory">Inventory</Link>
 </li>
 <li>
+<Link to="/admin/reports">Reports</Link>
+</li>
+<li>
 <Link to="/admin/VendorApproval">Vendor Request Approval</Link>
 </li>
 </ul>

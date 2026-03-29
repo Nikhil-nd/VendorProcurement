@@ -34,6 +34,7 @@ import TrackStatus from '../pages/employee/TrackStatus';
 import VendorRegister from "../pages/vendor-register/VendorRegister";
 
 import VendorApproval from "../pages/admin/VendorApproval";
+import AdminReports from "../pages/admin/Reports";
 
 import ProtectedRoute from "../components/ProtectedRoute";
 import  ProcessPayment from "../pages/finance/ProcessPayment";
@@ -74,6 +75,10 @@ function AppRouter() {
 
        <Route path="/admin/PurchaseOrder" element={<PurchaseOrder />} />
     <Route path="/admin/Inventory" element={<Inventory />} />
+    <Route path="/admin/reports" element={<AdminReports />} />
+    <Route path="/admin/reports/cost-analysis" element={<CostAnalysis />} />
+    <Route path="/admin/reports/spend-analysis" element={<SpendAnalysis />} />
+    <Route path="/admin/reports/vendor-performance" element={<VendorPerformance />} />
 
             <Route path="/pages/vendor-register/VendorRegister" element={<VendorRegister />} />
    

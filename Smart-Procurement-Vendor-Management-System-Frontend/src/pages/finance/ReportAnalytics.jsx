@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function ReportAnalytics() {
+function ReportAnalytics({ basePath = "/finance" }) {
   const navigate = useNavigate();
 
   const cards = [
@@ -9,19 +9,19 @@ function ReportAnalytics() {
       title: "Cost Analysis",
       description: "View procurement cost summary",
       icon: "Cost",
-      path: "/finance/reports/cost-analysis",
+      path: `${basePath}/reports/cost-analysis`,
     },
     {
       title: "Spend Analysis",
       description: "Monthly procurement spending",
       icon: "Spend",
-      path: "/finance/reports/spend-analysis",
+      path: `${basePath}/reports/spend-analysis`,
     },
     {
       title: "Vendor Performance",
       description: "Vendor order statistics",
       icon: "Vendor",
-      path: "/finance/reports/vendor-performance",
+      path: `${basePath}/reports/vendor-performance`,
     },
   ];
 

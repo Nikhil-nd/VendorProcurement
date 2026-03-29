@@ -116,6 +116,7 @@ export default function ViewInvoices() {
 
         <thead>
           <tr>
+            <th>Invoice ID</th>
             <th>Invoice Number</th>
             <th>Vendor</th>
             <th>Amount</th>
@@ -125,34 +126,27 @@ export default function ViewInvoices() {
 
         <tbody>
 
-          {invoices.map(inv => (
-
-            <tr key={inv.id}>
-
-              <td>{inv.invoiceNumber}</td>
-
-              <td>
-                {inv.purchaseOrder?.vendor?.companyName}
-              </td>
-
-              <td>{inv.amount}</td>
-
-              <td>
-
-                <button
-                  className="action-btn"
-                  onClick={() =>
-                    processPayment(inv.id, inv.amount)
-                  }
-                >
-                  Pay
-                </button>
-
-              </td>
-
-            </tr>
-
-          ))}
+          {invoices
+            .filter(inv => {
+              const status = inv.status ? inv.status.toUpperCase() : "";
+              return status !== "PAID" && status !== "COMPLETED";
+            })
+            .map(inv => (
+              <tr key={inv.id}>
+                <td>{inv.id}</td>
+                <td>{inv.invoiceNumber}</td>
+                <td>{inv.purchaseOrder?.vendor?.companyName}</td>
+                <td>{inv.amount}</td>
+                <td>
+                  <button
+                    className="action-btn"
+                    onClick={() => processPayment(inv.id, inv.amount)}
+                  >
+                    Pay
+                  </button>
+                </td>
+              </tr>
+            ))}
 
         </tbody>
 

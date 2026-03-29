@@ -118,6 +118,12 @@ export default function AdminDashboard() {
         to: "/admin/Inventory",
       },
       {
+        key: "reports",
+        title: "Reports",
+        subtitle: "View cost, spend, and vendor performance reports",
+        to: "/admin/reports",
+      },
+      {
         key: "vendor-request-approval",
         title: "Vendor Request Approval",
         subtitle: "Review and approve vendor requests",
@@ -168,6 +174,10 @@ export default function AdminDashboard() {
 
           <li>
             <Link to="/admin/Inventory">Inventory</Link>
+          </li>
+
+          <li>
+            <Link to="/admin/reports">Reports</Link>
           </li>
 
           <li>

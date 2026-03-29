@@ -80,6 +80,7 @@ export default function ViewPurchaseOrders() {
 
         <thead>
           <tr>
+            <th>PO ID</th>
             <th>PO Number</th>
             <th>Order Date</th>
             <th>Status</th>
@@ -89,13 +90,12 @@ export default function ViewPurchaseOrders() {
         <tbody>
 
           {orders.map(po => (
-
             <tr key={po.id}>
+              <td>{po.id}</td>
               <td>{po.poNumber}</td>
               <td>{po.orderDate}</td>
               <td>{po.status}</td>
             </tr>
-
           ))}
 
         </tbody>

@@ -1,6 +1,7 @@
 .dashboard-container {
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
+  width: 100%;
   font-family: Arial;
 }
 
@@ -8,11 +9,18 @@
 
 .sidebar {
   width: 260px;
+  min-width: 260px;
   background: linear-gradient(160deg, #38761d, #2f5d17);
   color: white;
   padding: 30px;
   display: flex;
   flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  overflow-y: auto;
+  box-sizing: border-box;
 }
 
 .sidebar h2 {
@@ -82,8 +90,12 @@
 
 .main-content {
   flex: 1;
+  margin-left: 260px;
+  width: calc(100% - 260px);
+  min-height: 100vh;
   padding: 40px;
   background: #f1f5f9;
+  box-sizing: border-box;
 }
 
 .vendor-title-card {
@@ -140,6 +152,24 @@
 }
 
 @media (max-width: 920px) {
+  .dashboard-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    position: static;
+    width: 100%;
+    min-width: 0;
+    height: auto;
+    overflow-y: visible;
+  }
+
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+    min-height: auto;
+  }
+
   .vendor-inline-form {
     grid-template-columns: 1fr;
   }
