@@ -67,23 +67,10 @@ flowchart LR
 
 <p align="center"><sub>Illustrative SVG mockup — not a live screenshot.</sub></p>
 
-### Add your own demo GIF
-
-1. Record a short walkthrough (e.g. ShareX, OBS, ScreenToGif).  
-2. Export as **`docs/assets/demo.gif`**.  
-3. Add this under the preview (or replace the SVG block):
-
-```markdown
-<p align="center">
-  <img src="docs/assets/demo.gif" alt="Application demo" width="85%" />
-</p>
-```
-
-Commit `demo.gif` with the README change so GitHub renders it inline.
 
 ---
 
-## Core flow (text)
+## Core flow 
 
 1. Employee creates a **requisition**.  
 2. Manager **approves**.  
@@ -194,7 +181,23 @@ Explore more under `.../controller/` in the backend.
 
 ## License
 
-Add your license here (MIT, Apache-2.0, proprietary, etc.).
+AMIT License
+
+Copyright (c) 2026 [Your Name or Organization]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the “Software”), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
 
 ---
 
