@@ -58,6 +58,10 @@ public class InvoiceServiceImpl implements InvoiceService {
                 .orElseThrow(() -> new RuntimeException("Invoice not found"));
     }
 
+    public List<Invoice> getByRequisitionId(Long requisitionId) {
+        return invoiceRepository.findByPurchaseOrderRequisitionId(requisitionId);
+    }
+
 //    @Override
 //    public Invoice create(Invoice invoice) {
 //        return null;

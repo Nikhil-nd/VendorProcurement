@@ -42,6 +42,11 @@ public class InvoiceController {
             return service.getById(id);
         }
 
+        @GetMapping("/requisition/{requisitionId}")
+        public List<Invoice> getByRequisitionId(@PathVariable Long requisitionId) {
+            return service.getByRequisitionId(requisitionId);
+        }
+
 
 //
 //    @PostMapping

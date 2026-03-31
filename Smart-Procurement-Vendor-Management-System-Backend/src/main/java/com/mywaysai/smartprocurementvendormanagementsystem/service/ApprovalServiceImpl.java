@@ -28,6 +28,7 @@ public class ApprovalServiceImpl implements ApprovalService {
         Approval approval = new Approval();
         approval.setRequisition(req);
         approval.setDecision("APPROVED");
+        approval.setManagerName("Procurement Manager");
         approval.setApprovedDate(LocalDateTime.now());
 
         requisitionRepository.save(req);

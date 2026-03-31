@@ -15,14 +15,32 @@ export default function SubmitInvoice() {
   };
 
   const handleSubmit = () => {
+    const poId = Number(form.poId);
+    const amount = Number(form.amount);
+    if (!form.poId || Number.isNaN(poId) || poId <= 0) {
+      alert("Enter a valid Purchase Order ID");
+      return;
+    }
+    if (!form.invoiceNumber?.trim()) {
+      alert("Enter invoice number");
+      return;
+    }
+    if (form.amount === "" || Number.isNaN(amount) || amount < 0) {
+      alert("Enter a valid amount");
+      return;
+    }
 
     submitInvoice({
-      purchaseOrder: { id: form.poId },
-      invoiceNumber: form.invoiceNumber,
-      amount: form.amount
+      purchaseOrder: { id: poId },
+      invoiceNumber: form.invoiceNumber.trim(),
+      amount
     })
       .then(() => alert("Invoice Submitted"))
-      .catch(err => console.error(err));
+      .catch(err => {
+        console.error(err);
+        const msg = err.response?.data?.message || err.message || "Could not submit invoice";
+        alert(msg);
+      });
   };
 
   return (

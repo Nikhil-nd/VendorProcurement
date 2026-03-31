@@ -34,7 +34,7 @@ import TrackStatus from '../pages/employee/TrackStatus';
 import VendorRegister from "../pages/vendor-register/VendorRegister";
 
 import VendorApproval from "../pages/admin/VendorApproval";
-import AdminReports from "../pages/admin/Reports";
+import AdminReports from "../pages/finance/Reports";
 
 import ProtectedRoute from "../components/ProtectedRoute";
 import  ProcessPayment from "../pages/finance/ProcessPayment";

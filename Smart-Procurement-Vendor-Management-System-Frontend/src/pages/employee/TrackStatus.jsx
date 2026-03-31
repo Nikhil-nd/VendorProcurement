@@ -12,6 +12,7 @@ const [id,setId] = useState("");
 const [approval,setApproval] = useState([]);
 const [po,setPo] = useState([]);
 const [delivery,setDelivery] = useState([]);
+const [invoices,setInvoices] = useState([]);
 
 
 // load requisitions table
@@ -97,6 +98,14 @@ setDelivery(delRes.data || []);
 setDelivery([]);
 }
 
+// INVOICES (linked via PO → requisition)
+try{
+const invRes = await api.get(`/invoice/requisition/${id}`);
+setInvoices(invRes.data || []);
+}catch{
+setInvoices([]);
+}
+
 };
 
 return(
@@ -168,7 +177,7 @@ Track
 {approval.length>0 ? (
 approval.map((a,index)=>(
 <li key={a.id ?? index}>
-Manager : {a.managerName} | Decision : {a.decision}
+Manager : {a.managerName ?? "—"} | Decision : {a.decision ?? "—"}
 </li>
 ))
 ):(
@@ -190,6 +199,23 @@ PO #{p.id}
 ))
 ):(
 <li>No purchase orders</li>
+)}
+</ul>
+</div>
+
+
+<div className="track-info-card">
+<h3>Invoices</h3>
+
+<ul className="track-list">
+{invoices.length>0 ? (
+invoices.map((inv,index)=>(
+<li key={inv.id ?? index}>
+#{inv.id} — {inv.invoiceNumber} | Amount : {inv.amount} | Status : {inv.status ?? "—"}
+</li>
+))
+):(
+<li>No invoices</li>
 )}
 </ul>
 </div>
