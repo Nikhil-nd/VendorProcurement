@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/vendor-documents")
-@CrossOrigin(origins = {"http://localhost:5173", "http://localhost:5180"})
+
 public class VendorDocumentController {
 
     private final VendorDocumentService service;
