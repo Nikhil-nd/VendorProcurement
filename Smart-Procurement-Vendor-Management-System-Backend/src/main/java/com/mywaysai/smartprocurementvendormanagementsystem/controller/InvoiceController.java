@@ -15,7 +15,7 @@ import com.mywaysai.smartprocurementvendormanagementsystem.service.InvoiceServic
 
 @RestController
 @RequestMapping("/invoice")
-@CrossOrigin(origins = {"http://localhost:5173", "http://localhost:5180"})
+
 //@RequiredArgsConstructor
 public class InvoiceController {
 
