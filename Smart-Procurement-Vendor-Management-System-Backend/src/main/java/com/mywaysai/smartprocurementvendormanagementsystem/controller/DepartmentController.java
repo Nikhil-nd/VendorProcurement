@@ -11,7 +11,7 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/departments")
-@CrossOrigin(origins = {"http://localhost:5173", "http://localhost:5180"})
+
 @RequiredArgsConstructor
 public class DepartmentController {
 
