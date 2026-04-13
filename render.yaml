@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: vendor-backend
+    env: java
+    rootDir: Smart-Procurement-Vendor-Management-System-Backend
+    buildCommand: ./mvnw clean install
+    startCommand: java -jar target/*.jar
