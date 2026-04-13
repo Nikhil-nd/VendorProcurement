@@ -3,5 +3,3 @@ services:
     name: vendor-backend
     env: docker
     rootDir: Smart-Procurement-Vendor-Management-System-Backend
-    buildCommand: ./mvnw clean install
-    startCommand: java -jar target/*.jar
