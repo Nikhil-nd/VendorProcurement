@@ -16,7 +16,7 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/approvals")
-@CrossOrigin(origins = {"http://localhost:5173", "http://localhost:5174", "http://localhost:5180"})
+@CrossOrigin(origins = "*")
 @RequiredArgsConstructor
 public class ApprovalController {
 
