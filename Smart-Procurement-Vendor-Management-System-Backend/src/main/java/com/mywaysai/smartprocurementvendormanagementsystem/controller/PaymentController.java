@@ -19,7 +19,7 @@ import com.mywaysai.smartprocurementvendormanagementsystem.service.PaymentServic
 
 @RestController
 @RequestMapping("/payment")
-@CrossOrigin(origins = {"http://localhost:5173", "http://localhost:5180"})
+
 //@RequiredArgsConstructor
 public class PaymentController {
 
