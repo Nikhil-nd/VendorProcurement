@@ -16,7 +16,7 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping({"/reports", "/api/reports"})
-@CrossOrigin(origins = {"http://localhost:5173", "http://localhost:5180"})
+
 @RequiredArgsConstructor
 public class ReportController {
 
